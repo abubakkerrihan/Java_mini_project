@@ -1,22 +1,32 @@
 package com.servlet;
+
+import java.io.IOException;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import java.io.*;
 import java.sql.Date;
 import com.dao.MarkDAO;
 import com.model.StudentMark;
 
 public class UpdateMarkServlet extends HttpServlet {
- protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
-  try{
-   StudentMark s = new StudentMark();
-   s.setStudentId(Integer.parseInt(req.getParameter("id")));
-   s.setStudentName(req.getParameter("name"));
-   s.setSubject(req.getParameter("subject"));
-   s.setMarks(Integer.parseInt(req.getParameter("marks")));
-   s.setExamDate(Date.valueOf(req.getParameter("date")));
-   new MarkDAO().updateMark(s);
-   res.sendRedirect("markdisplay.jsp");
-  }catch(Exception e){e.printStackTrace();}
- }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        try {
+            StudentMark mark = new StudentMark();
+            mark.setStudentID(Integer.parseInt(request.getParameter("id")));
+            mark.setStudentName(request.getParameter("name"));
+            mark.setSubject(request.getParameter("subject"));
+            mark.setMarks(Integer.parseInt(request.getParameter("marks")));
+            mark.setExamDate(Date.valueOf(request.getParameter("date")));
+
+            MarkDAO dao = new MarkDAO();
+            dao.updateMark(mark);
+
+            response.sendRedirect("DisplayMarksServlet");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

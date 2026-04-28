@@ -1,18 +1,25 @@
 package com.servlet;
+
+import java.io.IOException;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import java.io.*;
-import java.sql.Date;
 import com.dao.MarkDAO;
-import com.model.StudentMark;
-
 
 public class DeleteMarkServlet extends HttpServlet {
-	 protected void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException {
-	  try{
-	   int id = Integer.parseInt(req.getParameter("id"));
-	   new MarkDAO().deleteMark(id);
-	   res.sendRedirect("markdisplay.jsp");
-	  }catch(Exception e){e.printStackTrace();}
-	 }
-	}
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        try {
+            int id = Integer.parseInt(request.getParameter("id"));
+
+            MarkDAO dao = new MarkDAO();
+            dao.deleteMark(id);
+
+            response.sendRedirect("DisplayMarksServlet");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}

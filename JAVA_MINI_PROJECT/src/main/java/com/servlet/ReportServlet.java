@@ -2,39 +2,41 @@ package com.servlet;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
-import java.io.*;
+import java.io.IOException;
+import java.util.List;
 import com.dao.MarkDAO;
 import com.model.StudentMark;
-import java.util.List;
 
 public class ReportServlet extends HttpServlet {
 
- protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-  try{
-   String type = req.getParameter("type");
-   MarkDAO dao = new MarkDAO();
+        try {
+            String type = request.getParameter("type");
 
-   List<StudentMark> list = null;   // ✅ FIXED
+            MarkDAO dao = new MarkDAO();
+            List<StudentMark> list = null;
 
-   if(type.equals("above")){
-     int val = Integer.parseInt(req.getParameter("value"));
-     list = dao.getMarksAbove(val);
+            if (type.equals("above")) {
+                int value = Integer.parseInt(request.getParameter("value"));
+                list = dao.getAboveMarks(value);
+            } 
+            else if (type.equals("subject")) {
+                String subject = request.getParameter("subject");
+                list = dao.getBySubject(subject);
+            } 
+            else if (type.equals("top")) {
+                int n = Integer.parseInt(request.getParameter("n"));
+                list = dao.getTopN(n);
+            }
 
-   } else if(type.equals("subject")){
-     list = dao.getBySubject(req.getParameter("subject"));
+            request.setAttribute("list", list);
+            RequestDispatcher rd = request.getRequestDispatcher("report_result.jsp");
+            rd.forward(request, response);
 
-   } else if(type.equals("top")){
-     int n = Integer.parseInt(req.getParameter("topn"));
-     list = dao.getTopN(n);
-   }
-
-   req.setAttribute("data", list);
-   RequestDispatcher rd = req.getRequestDispatcher("report_result.jsp");
-   rd.forward(req, res);
-
-  } catch(Exception e){
-    e.printStackTrace();
-  }
- }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

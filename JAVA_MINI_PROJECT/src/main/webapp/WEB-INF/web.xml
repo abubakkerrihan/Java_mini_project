@@ -1,69 +1,64 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         version="3.1">
 
-<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee 
-         https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
-         version="5.0">
-
-    <!-- Welcome Page -->
-    <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
-
-    <!-- ================= Add ================= -->
+    <!-- Add -->
     <servlet>
-        <servlet-name>AddMark</servlet-name>
+        <servlet-name>AddMarkServlet</servlet-name>
         <servlet-class>com.servlet.AddMarkServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>AddMark</servlet-name>
-        <url-pattern>/addMark</url-pattern>
+        <servlet-name>AddMarkServlet</servlet-name>
+        <url-pattern>/AddMarkServlet</url-pattern>
     </servlet-mapping>
 
-    <!-- ================= Update ================= -->
+    <!-- Update -->
     <servlet>
-        <servlet-name>UpdateMark</servlet-name>
+        <servlet-name>UpdateMarkServlet</servlet-name>
         <servlet-class>com.servlet.UpdateMarkServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>UpdateMark</servlet-name>
-        <url-pattern>/updateMark</url-pattern>
+        <servlet-name>UpdateMarkServlet</servlet-name>
+        <url-pattern>/UpdateMarkServlet</url-pattern>
     </servlet-mapping>
 
-    <!-- ================= Delete ================= -->
+    <!-- Delete -->
     <servlet>
-        <servlet-name>DeleteMark</servlet-name>
+        <servlet-name>DeleteMarkServlet</servlet-name>
         <servlet-class>com.servlet.DeleteMarkServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>DeleteMark</servlet-name>
-        <url-pattern>/deleteMark</url-pattern>
+        <servlet-name>DeleteMarkServlet</servlet-name>
+        <url-pattern>/DeleteMarkServlet</url-pattern>
     </servlet-mapping>
 
-    <!-- ================= Display ================= -->
+    <!-- Display -->
     <servlet>
-        <servlet-name>DisplayMarks</servlet-name>
+        <servlet-name>DisplayMarksServlet</servlet-name>
         <servlet-class>com.servlet.DisplayMarksServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>DisplayMarks</servlet-name>
-        <url-pattern>/displayMarks</url-pattern>
+        <servlet-name>DisplayMarksServlet</servlet-name>
+        <url-pattern>/DisplayMarksServlet</url-pattern>
     </servlet-mapping>
 
-    <!-- ================= Reports ================= -->
+    <!-- Report -->
     <servlet>
-        <servlet-name>Report</servlet-name>
+        <servlet-name>ReportServlet</servlet-name>
         <servlet-class>com.servlet.ReportServlet</servlet-class>
     </servlet>
-
     <servlet-mapping>
-        <servlet-name>Report</servlet-name>
-        <url-pattern>/report</url-pattern>
+        <servlet-name>ReportServlet</servlet-name>
+        <url-pattern>/ReportServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- Report Criteria -->
+    <servlet>
+        <servlet-name>ReportCriteriaServlet</servlet-name>
+        <servlet-class>com.servlet.ReportCriteriaServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReportCriteriaServlet</servlet-name>
+        <url-pattern>/ReportCriteriaServlet</url-pattern>
     </servlet-mapping>
 
 </web-app>

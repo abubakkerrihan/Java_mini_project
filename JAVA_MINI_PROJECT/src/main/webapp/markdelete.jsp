@@ -1,14 +1,19 @@
-<html><body>
-<h2>Reports</h2>
-<form action="report" method="post">
-<select name="type">
-<option value="above">Marks Above</option>
-<option value="subject">By Subject</option>
-<option value="top">Top N</option>
-</select><br>
-<input name="value" placeholder="Marks">
-<input name="subject" placeholder="Subject">
-<input name="topn" placeholder="Top N">
-<button>Generate</button>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Delete Marks</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>Delete Student Record</h2>
+
+<form action="DeleteMarkServlet" method="post" class="form">
+    <input type="number" name="id" placeholder="Student ID" required>
+    <button type="submit">Delete</button>
 </form>
-</body></html>
+
+<a href="index.jsp">Back</a>
+
+</body>
+</html>

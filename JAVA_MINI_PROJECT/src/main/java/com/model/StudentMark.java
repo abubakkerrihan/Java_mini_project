@@ -1,15 +1,16 @@
 package com.model;
+
 import java.sql.Date;
 
 public class StudentMark {
-    private int studentId;
+    private int studentID;
     private String studentName;
     private String subject;
     private int marks;
     private Date examDate;
 
-    public int getStudentId() { return studentId; }
-    public void setStudentId(int studentId) { this.studentId = studentId; }
+    public int getStudentID() { return studentID; }
+    public void setStudentID(int studentID) { this.studentID = studentID; }
 
     public String getStudentName() { return studentName; }
     public void setStudentName(String studentName) { this.studentName = studentName; }
@@ -23,4 +24,3 @@ public class StudentMark {
     public Date getExamDate() { return examDate; }
     public void setExamDate(Date examDate) { this.examDate = examDate; }
 }
-

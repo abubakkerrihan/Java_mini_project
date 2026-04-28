@@ -1,37 +1,43 @@
-<%@ page import="java.util.*,com.dao.*,com.model.*" %>
+<%@ page import="java.util.*, com.model.StudentMark" %>
 
+<!DOCTYPE html>
 <html>
 <head>
+<title>Display Marks</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h2>Student Marks</h2>
+<h2>All Student Records</h2>
 
-<table border="1">
+<table>
 <tr>
-<th>ID</th><th>Name</th><th>Subject</th><th>Marks</th>
+<th>ID</th>
+<th>Name</th>
+<th>Subject</th>
+<th>Marks</th>
+<th>Date</th>
 </tr>
 
 <%
-try {
-    List<StudentMark> list = new MarkDAO().getAllMarks();
-    for(StudentMark s : list){
+List<StudentMark> list = (List<StudentMark>)request.getAttribute("list");
+
+for(StudentMark m : list){
 %>
+
 <tr>
-<td><%= s.getStudentId() %></td>
-<td><%= s.getStudentName() %></td>
-<td><%= s.getSubject() %></td>
-<td><%= s.getMarks() %></td>
+<td><%=m.getStudentID()%></td>
+<td><%=m.getStudentName()%></td>
+<td><%=m.getSubject()%></td>
+<td><%=m.getMarks()%></td>
+<td><%=m.getExamDate()%></td>
 </tr>
-<%
-    }
-} catch(Exception e){
-    out.println("Error: " + e.getMessage());
-}
-%>
+
+<% } %>
 
 </table>
+
+<a href="index.jsp">Back</a>
 
 </body>
 </html>

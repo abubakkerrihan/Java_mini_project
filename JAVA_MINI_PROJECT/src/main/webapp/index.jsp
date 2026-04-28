@@ -1,8 +1,8 @@
-<%@ page language="java" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="style.css">
-    <title>Mark Management System</title>
+<title>Mark Management System</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -12,8 +12,8 @@
     <a href="markadd.jsp">Add Marks</a>
     <a href="markupdate.jsp">Update Marks</a>
     <a href="markdelete.jsp">Delete Marks</a>
-    <a href="markdisplay.jsp">View Marks</a>
-    <a href="reports.jsp">Reports</a>
+    <a href="DisplayMarksServlet">Display Marks</a>
+    <a href="report_form.jsp">Reports</a>
 </div>
 
 </body>

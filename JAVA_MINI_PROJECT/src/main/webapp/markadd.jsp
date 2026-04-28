@@ -1,13 +1,24 @@
+<!DOCTYPE html>
 <html>
-<head><link rel="stylesheet" href="style.css"></head>
+<head>
+<title>Add Marks</title>
+<link rel="stylesheet" href="style.css">
+</head>
 <body>
-<form action="addMark" method="post">
-<input type="text" name="id" placeholder="ID" required><br>
-<input type="text" name="name" placeholder="Name" required><br>
-<input type="text" name="subject" placeholder="Subject" required><br>
-<input type="number" name="marks" placeholder="Marks" required><br>
-<input type="date" name="date" required><br>
-<button type="submit">Add</button>
+
+<h2>Add Student Marks</h2>
+
+<form action="AddMarkServlet" method="post" class="form">
+    <input type="number" name="id" placeholder="Student ID" required>
+    <input type="text" name="name" placeholder="Student Name" required>
+    <input type="text" name="subject" placeholder="Subject" required>
+    <input type="number" name="marks" placeholder="Marks" required>
+    <input type="date" name="date" required>
+
+    <button type="submit">Add</button>
 </form>
+
+<a href="index.jsp">Back</a>
+
 </body>
 </html>

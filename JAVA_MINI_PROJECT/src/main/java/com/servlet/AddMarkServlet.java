@@ -1,43 +1,32 @@
 package com.servlet;
 
+import java.io.IOException;
 import javax.servlet.*;
 import javax.servlet.http.*;
-import java.io.*;
 import java.sql.Date;
 import com.dao.MarkDAO;
 import com.model.StudentMark;
 
 public class AddMarkServlet extends HttpServlet {
 
-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
         try {
-            String idStr = req.getParameter("id");
-            String marksStr = req.getParameter("marks");
-            String dateStr = req.getParameter("date");
+            StudentMark mark = new StudentMark();
+            mark.setStudentID(Integer.parseInt(request.getParameter("id")));
+            mark.setStudentName(request.getParameter("name"));
+            mark.setSubject(request.getParameter("subject"));
+            mark.setMarks(Integer.parseInt(request.getParameter("marks")));
+            mark.setExamDate(Date.valueOf(request.getParameter("date")));
 
-            if(idStr == null || marksStr == null || dateStr == null ||
-               idStr.isEmpty() || marksStr.isEmpty() || dateStr.isEmpty()) {
+            MarkDAO dao = new MarkDAO();
+            dao.insertMark(mark);
 
-                res.getWriter().println("ERROR: All fields are required");
-                return;
-            }
+            response.sendRedirect("DisplayMarksServlet");
 
-            StudentMark s = new StudentMark();
-            s.setStudentId(Integer.parseInt(idStr));
-            s.setStudentName(req.getParameter("name"));
-            s.setSubject(req.getParameter("subject"));
-            s.setMarks(Integer.parseInt(marksStr));
-            s.setExamDate(Date.valueOf(dateStr));
-
-            new MarkDAO().addMark(s);
-
-            res.sendRedirect("markdisplay.jsp");
-
-        } catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-            res.setContentType("text/plain");
-            res.getWriter().println("ERROR: " + e.getMessage());
         }
     }
 }
