@@ -11,7 +11,7 @@ public class MarkDAO {
     private String jdbcPassword = "password";
 
     private static final String INSERT_SQL =
-            "INSERT INTO StudentMarks VALUES (?, ?, ?, ?, ?)";
+    		"INSERT INTO StudentMarks(StudentName, Subject, Marks, ExamDate) VALUES (?, ?, ?, ?)";
 
     private static final String UPDATE_SQL =
             "UPDATE StudentMarks SET StudentName=?, Subject=?, Marks=?, ExamDate=? WHERE StudentID=?";
@@ -34,11 +34,10 @@ public class MarkDAO {
         try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(INSERT_SQL)) {
 
-            ps.setInt(1, mark.getStudentID());
-            ps.setString(2, mark.getStudentName());
-            ps.setString(3, mark.getSubject());
-            ps.setInt(4, mark.getMarks());
-            ps.setDate(5, mark.getExamDate());
+        	ps.setString(1, mark.getStudentName());
+        	ps.setString(2, mark.getSubject());
+        	ps.setInt(3, mark.getMarks());
+        	ps.setDate(4, mark.getExamDate());
             ps.executeUpdate();
         }
     }

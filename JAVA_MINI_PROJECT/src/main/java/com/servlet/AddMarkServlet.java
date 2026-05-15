@@ -1,4 +1,5 @@
 package com.servlet;
+import javax.servlet.RequestDispatcher;
 
 import java.io.IOException;
 import javax.servlet.*;
@@ -14,7 +15,6 @@ public class AddMarkServlet extends HttpServlet {
 
         try {
             StudentMark mark = new StudentMark();
-            mark.setStudentID(Integer.parseInt(request.getParameter("id")));
             mark.setStudentName(request.getParameter("name"));
             mark.setSubject(request.getParameter("subject"));
             mark.setMarks(Integer.parseInt(request.getParameter("marks")));
@@ -24,7 +24,6 @@ public class AddMarkServlet extends HttpServlet {
             dao.insertMark(mark);
 
             response.sendRedirect("DisplayMarksServlet");
-
         } catch (Exception e) {
             e.printStackTrace();
         }
